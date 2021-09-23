@@ -40,9 +40,25 @@ services:
           test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
           retries: 3
           timeout: 5s
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: enginer385@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: f2777ox
+            PGADMIN_LISTEN_PORT: 2777
+        ports:
+            - "2777:2777"
+        volumes:
+            - pgadmin-data:/var/lib/pgadmin
+        networks:
+            - sail
+        links:
+            - "pgsql:pgsql-server"
 networks:
     sail:
         driver: bridge
 volumes:
     sailpgsql:
         driver: local
+    pgadmin-data:
