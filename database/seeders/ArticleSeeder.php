@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
+use App\Models\News;
 use Illuminate\Database\Seeder;
 
 class ArticleSeeder extends Seeder
@@ -14,7 +14,7 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        Article::query()->delete();
-        Article::factory(random_int(15,25))->create();
+        News::query()->delete();
+        News::factory(random_int(15,25))->create();
     }
 }

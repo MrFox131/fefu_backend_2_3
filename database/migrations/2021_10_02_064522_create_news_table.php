@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticlesTable extends Migration
+class CreateNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 255)->nullable(false);
+            $table->string('title', 255);
             $table->string('slug', 255)->unique();
-            $table->mediumText('description');
-            $table->text('text')->nullable(false);
-            $table->boolean('is_published')->nullable(false);
+            $table->mediumText('description')->nullable(true);
+            $table->text('text');
+            $table->boolean('is_published');
             $table->timestamp('published_at');
             $table->timestamps();
         });
