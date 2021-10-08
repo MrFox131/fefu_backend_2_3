@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\News;
 use Illuminate\Database\Seeder;
 
-class ArticleSeeder extends Seeder
+class NewsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
