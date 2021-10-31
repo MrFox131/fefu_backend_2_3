@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class NewsController extends Controller
 {
