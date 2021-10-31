@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Log;
 class NewsController extends Controller
 {
     function getList() {
-        $news = News::query()->where('is_published', '=' ,'1')
-            ->where('published_at', '<=', 'now()')
+        $news = News::query()->where('is_published',true)
+            ->where('published_at', '<=', 'NOW()')
             ->orderByDesc('published_at')
             ->orderByDesc('id')
             ->paginate(5);
@@ -20,9 +20,10 @@ class NewsController extends Controller
 
     function getDetails($slug) {
         $news_element = News::query()
-            ->where('slug', '=', $slug)->first()
+            ->where('slug', $slug)
             ->where('published_at', '<=', 'NOW()')
-            ->where('is_published', '=', 'true');
+            ->where('is_published', true)
+            ->first();
 
         if ($news_element === null) {
             abort(404);
