@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use HasFactory, Sluggable;
-    public $title;
 
     public function sluggable(): array
     {
