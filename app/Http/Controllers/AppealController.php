@@ -24,9 +24,6 @@ class AppealController extends Controller
             if (!$request->filled('message')) {
                 $validationErrors[] = 'Please, fill message field.';
             }
-            if ($request->input('_token') != csrf_token()){
-                $validationErrors[] = 'Csrf is invalid, please, try again.';
-            }
             if (count($validationErrors)>0) {
                 $request->flash();
             } else {

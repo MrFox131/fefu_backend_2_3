@@ -17,7 +17,7 @@ class CreateAppealsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 20);
-            $table->decimal('phone', 11, 0, true)->nullable();
+            $table->string('phone', 11)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('message', 100);
         });
