@@ -21,4 +21,5 @@ Route::get('/', function () {
 
 Route::get('/news/', [NewsController::class, 'getList'])->name('news_list');
 Route::get('/news/{slug}', [NewsController::class, 'getDetails'])->name('news_item');
-Route::match(['POST', 'GET'],'/appeal', AppealController::class)->name('appeal');
+Route::post('/appeal', [AppealController::class, 'postAppeal'])->name('appeal');
+Route::get('/appeal', [AppealController::class, 'getAppealPage'])->name('appeal');

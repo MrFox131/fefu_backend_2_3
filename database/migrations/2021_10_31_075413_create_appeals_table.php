@@ -18,13 +18,9 @@ class CreateAppealsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 20);
-            $table->string('surname', 40);
-            $table->string('patronymic', 20)->nullable();
-            $table->integer('age');
             $table->string('phone', 11)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('message', 100);
-            $table->enum('gender', [Gender::MALE, Gender::FEMALE]);
         });
     }
 
