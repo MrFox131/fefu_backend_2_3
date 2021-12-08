@@ -422,7 +422,7 @@
             All gonna be ok with your message
         </div>
     @else
-        @foreach($errors as $error)
+        @foreach($errors->all() as $error)
             <div class="alert alert-danger" role="alert">
                 {{$error}}
             </div>
@@ -432,11 +432,23 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Имя*:</label>
-            <input name="name" class="form-control" required value="{{old('name')}}"/>
+            <input name="name" class="form-control" value="{{old('name')}}"/>
+        </div>
+        <div class="mb-3">
+            <label for="surname" class="form-label">Фамилия*:</label>
+            <input name="surname" class="form-control" value="{{old('surname')}}"/>
+        </div>
+        <div class="mb-3">
+            <label for="patronymic" class="form-label">Отчество:</label>
+            <input name="patronymic" class="form-control" value="{{old('patronymic')}}"/>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Возраст*:</label>
+            <input name="age" class="form-control" value="{{old('age')}}"/>
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Номер телеофна:</label>
-            <input name="phone" type="number" class="form-control" value="{{old('phone')}}"/>
+            <input name="phone" class="form-control" value="{{old('phone')}}"/>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">E-mail:</label>
@@ -444,7 +456,14 @@
         </div>
         <div class="mb-3">
             <label for="message" class="form-label">Сообщение*:</label>
-            <textarea name="message" required class="form-control" >{{old('message')}}</textarea>
+            <textarea name="message" class="form-control" >{{old('message')}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="gender" class="form-label">Пол*:</label>
+            <select name="gender" id="gender_selecter">
+                <option value="0" {{old('gender')===0?"selected":""}}>Male</option>
+                <option value="1" {{old('gender')===1?"selected":""}}>Female</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
