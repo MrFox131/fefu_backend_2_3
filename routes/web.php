@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppealController;
 use App\Http\Controllers\NewsController;
+use App\Http\Middleware\RedirectFromOldSlug;
 use Illuminate\Support\Facades\Route;
 
 /*
