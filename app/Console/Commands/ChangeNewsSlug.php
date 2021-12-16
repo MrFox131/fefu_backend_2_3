@@ -47,19 +47,19 @@ class ChangeNewsSlug extends Command
             $this->error("Slugs are equal");
             return 1;
         }
-        $news  = News::query()->where('slug', $oldSlug)->first();
+        $news = News::query()->where('slug', $oldSlug)->first();
         if ($news === null) {
             $this->error("No news with such slug");
             return 1;
         }
-        $redirect = Redirect::query()->where('old_slug', $oldSlug)->where('new_slug', $newSlug)->first();
+        $redirect = Redirect::query()->where('old_slug', route('news_item',['slug'=>$oldSlug], false))->where('new_slug', route('news_item',['slug'=>$newSlug], false))->first();
         if ($redirect !== null) {
             $this->error("Such pair of old slug and new slug already exists");
             return 1;
         }
 
         DB::transaction(function() use ($news, $newSlug){
-            $same_slugs_row = Redirect::query()->where('old_slug', $newSlug)->first();
+            $same_slugs_row = Redirect::query()->where('old_slug', route('news_item',['slug'=>$newSlug], false))->first();
             if ($same_slugs_row != null) {
                 $same_slugs_row->delete();
             }
