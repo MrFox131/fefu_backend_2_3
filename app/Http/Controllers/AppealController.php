@@ -26,6 +26,7 @@ class AppealController extends Controller
         $appeal->save();
 
         $success = true;
+        $request->session()->put('appeal_submitted', true);
 
         return redirect()->route('appeal')->with('success', $success);
     }
@@ -33,7 +34,9 @@ class AppealController extends Controller
         $success = $request->session()->get('success', false);
 
         return view('appeal', [
-            'success' => $success
+            'success' => $success,
+            'redirect' => $request->session()->get('isRedirect', false),
+            'prev_url' => $request->session()->get('prev_url', '')
         ]);
     }
 }

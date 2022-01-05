@@ -417,6 +417,11 @@
     align-items: center;
 ">
     <h2>Отправить сообщение</h2>
+    @if($redirect)
+        <div class="alert alert-success" role="alert">
+            Пожалуйста оставьте свой отзыв, он очень важен для нас. Вы всегда можете отказаться и <a href="{{$prev_url}}">вернуться на предыдущую страницу</a>
+        </div>
+    @endif
     @if($success)
         <div class="alert alert-success" role="alert">
             All gonna be ok with your message

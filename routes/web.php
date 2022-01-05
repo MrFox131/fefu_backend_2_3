@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppealController;
 use App\Http\Controllers\NewsController;
+use App\Http\Middleware\AppealProposal;
 use App\Http\Middleware\RedirectFromOldSlug;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,5 @@ Route::get('/', function () {
 
 Route::get('/news/', [NewsController::class, 'getList'])->name('news_list');
 Route::get('/news/{slug}', [NewsController::class, 'getDetails'])->name('news_item');
-Route::post('/appeal', [AppealController::class, 'postAppeal'])->name('appeal');
-Route::get('/appeal', [AppealController::class, 'getAppealPage'])->name('appeal');
+Route::post('/appeal', [AppealController::class, 'postAppeal'])->name('appeal')->withoutMiddleware(AppealProposal::class);
+Route::get('/appeal', [AppealController::class, 'getAppealPage'])->name('appeal')->withoutMiddleware(AppealProposal::class);
